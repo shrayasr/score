@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# initialize the "db" file (so to speak :P)
 if ! [ -f matches ]
 then
 	`touch matches`
@@ -32,7 +31,5 @@ then
 	do
 		url=`echo $LINE | cut -d "|" -f1`
 		curl -s $url |  grep -e "<title>" | sed -n 1p | cut -d "|" -f1 | cut -d ">" -f2	
-	#curl -s http://www.espncricinfo.com/asia-cup-2012/engine/current/match/535798.html |  grep -e "<title>" | sed -n 1p | cut -d "|" -f1 | cut -d ">" -f2
-	#curl -s http://www.espncricinfo.com/world-twenty20-qualifier-2012/engine/current/match/546439.html |  grep -e "<title>" | sed -n 1p | cut -d "|" -f1 | cut -d ">" -f2
 	done
 fi
