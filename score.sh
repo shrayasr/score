@@ -5,8 +5,29 @@ then
 	`touch matches`
 fi
 
+if [ "$1" = "-h" ]
+then
+	echo ""
+	echo "Usage: ./score [options]"
+	echo "       Just calling ./score.sh would show you scores for currently tracked matches"
+	echo ""
+	echo "       [options]"
+	echo "       -a <cricinfo url> <key> : Track a match"
+	echo "       -r <key>                : Stop tracking the match represented by <key>"
+	echo "       -l                      : Lists currently tracking matches"
+	echo ""
+fi
+
 if [ "$1" = "-a" ] 
 then
+	lineCount=`cat matches | grep -e "|$3" | wc -l | cut -d " " -f8`;
+
+	if ! [ "$lineCount" = "0" ]
+	then
+		echo "Sorry, that key already exists . Use another key , run ./score -h for more information"
+		# figure out how to exit here
+	fi
+
 	echo $2"|"$3 >>	matches
 
 elif [ "$1" = "-r" ] 

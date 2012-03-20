@@ -21,3 +21,7 @@ A small shell script to bring up scores from Cricinfo for all the cric fans out 
 * ~~Allow for adding of URL to track~~
 * ~~provision for multiple matches~~
 * Make it faster (currently its curl-ing the entire page)
+* ~~Add help~~
+* ~~check for uniqueness among keys~~
+	* What i've written is stupid . make it more streamlined 
+* Proper error messages
