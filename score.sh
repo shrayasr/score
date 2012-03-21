@@ -25,7 +25,7 @@ then
 	if ! [ "$lineCount" = "0" ]
 	then
 		echo "Sorry, that key already exists . Use another key , run ./score -h for more information"
-		# figure out how to exit here
+		exit 1
 	fi
 
 	echo $2"|"$3 >>	matches
