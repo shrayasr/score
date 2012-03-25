@@ -22,6 +22,7 @@ A small shell script to bring up scores from Cricinfo for all the cric fans out 
 
 #####TODO
 
+* Make the commandline arguments **NOT** potitional based - [guide](http://www.shelldorado.com/goodcoding/cmdargs.html)
 * ~~Allow for adding of URL to track~~
 * ~~provision for multiple matches~~
 * Make it faster (currently its curl-ing the entire page)
