@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if ! [ -f matches ]
+if ! [ -f ~/.matches ]
 then
-	`touch matches`
+	`touch ~/.matches`
 fi
 
 if [ "$1" = "-h" ]
@@ -20,7 +20,7 @@ fi
 
 if [ "$1" = "-a" ] 
 then
-	lineCount=`cat matches | grep -e "|$3" | wc -l | cut -d " " -f8`;
+	lineCount=`cat ~/.matches | grep -e "|$3" | wc -l | cut -d " " -f8`;
 
 	if ! [ "$lineCount" = "0" ]
 	then
@@ -28,17 +28,17 @@ then
 		exit 1
 	fi
 
-	echo $2"|"$3 >>	matches
+	echo $2"|"$3 >>	~/.matches
 
 elif [ "$1" = "-r" ] 
 then
-	mv matches matches.old
-	awk -v rem=$2 'match($1,rem) == 0 {print $0}' matches.old > matches
+	mv ~/.matches matches.old
+	awk -v rem=$2 'match($1,rem) == 0 {print $0}' matches.old > ~/matches
 	rm matches.old
 
 elif [ "$1" = "-l" ]
 then
-	cat matches | while read LINE
+	cat ~/.matches | while read LINE
 	do
 		key=`echo $LINE | cut -d "|" -f2`
 		value=`echo $LINE | cut -d "|" -f1`
@@ -48,7 +48,7 @@ then
 
 elif [ "$#" = 0 ]
 then
-	cat matches | while read LINE
+	cat ~/.matches | while read LINE
 	do
 		url=`echo $LINE | cut -d "|" -f1`
 		curl -s $url |  grep -e "<title>" | sed -n 1p | cut -d "|" -f1 | cut -d ">" -f2	
